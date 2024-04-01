@@ -10,23 +10,26 @@ import SwiftUI
 struct ContentView: View {
     
     @ObservedObject var contador = Modelo()
-    @State private var titulo = ""
     
     
     var body: some View {
         VStack {
-            Text(titulo).font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+            Spacer()
             Text("Contador = \(contador.contador)")
 
-            Button("Sumar Contador"){
+            Button("Reiniciar"){
                 //
                 contador.contador += 1
             }
-            Button("Titulo"){
-                //
-                titulo = "Nuevo titulo"
-            }
+            Spacer()
             Vista2()
+            Spacer()
+            Vista3()
+            Spacer()
+            Vista4()
+            Spacer()
+            Vista5()
+            Spacer()
         }
         .padding()
     }
@@ -40,6 +43,60 @@ struct Vista2: View {
         VStack {
             
             Text("Contador de vista 2(ObservedObject) = \(contador.contador)")
+
+            Button("Sumar Contador"){
+                //
+                contador.contador += 1
+            }
+        }
+        .padding()
+    }
+}
+
+struct Vista3: View {
+    
+    @StateObject var contador = Modelo()
+    
+    var body: some View {
+        VStack {
+            
+            Text("Contador de vista 3(StateObject) = \(contador.contador)")
+
+            Button("Sumar Contador"){
+                //
+                contador.contador += 1
+            }
+        }
+        .padding()
+    }
+}
+
+struct Vista4: View {
+    
+    @EnvironmentObject var contador : Modelo
+    
+    var body: some View {
+        VStack {
+            
+            Text("Contador de vista 4(EnviromentObject) = \(contador.contador)")
+
+            Button("Sumar Contador"){
+                //
+                contador.contador += 1
+            }
+        }
+        .padding()
+    }
+}
+
+struct Vista5: View {
+    
+    @EnvironmentObject var contador : Modelo
+
+    var body: some View {
+        VStack {
+            
+            Text("Contador de vista 5(EnviromentObject) = \(contador.contador)")
 
             Button("Sumar Contador"){
                 //
